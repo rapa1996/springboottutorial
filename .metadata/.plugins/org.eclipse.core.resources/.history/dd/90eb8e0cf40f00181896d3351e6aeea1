@@ -1,0 +1,7 @@
+package com.quote;
+
+public class Value {
+	private Integer id;
+	private String quote;
+
+}

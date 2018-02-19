@@ -1,0 +1,14 @@
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "controller")
+public class MyMicroService {
+	@RequestMapping(value = "/one")
+	public void display() {
+		System.out.println("Rahul Pattar");
+	}
+
+}

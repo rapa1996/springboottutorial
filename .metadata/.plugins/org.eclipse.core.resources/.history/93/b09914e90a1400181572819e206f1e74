@@ -1,0 +1,32 @@
+package com.postexample;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/")
+public class CarController {
+	
+	ArrayList<Car> car = new ArrayList(); 
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcomemethod() {
+		return "Welcome to Cars";
+	}
+	
+	@RequestMapping(value = "/cars", method = RequestMethod.GET)
+	public ArrayList<Car> getAllCars(){
+		return car;
+	}
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public ArrayList<Car> addCar(Car inputCar){
+		car.add(inputCar);
+		return car;
+	}
+	
+	
+
+}

@@ -1,0 +1,62 @@
+package com.postexample;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/")
+public class CarController {
+	
+	ArrayList<Car> car = new ArrayList(); 
+	
+	public CarController() {
+		Car c1 = new Car(1,"black",123455,"baleno");
+		Car c2 = new Car(2,"black",123455,"figo");
+		Car c3 = new Car(3,"white",123455,"jazz");
+		Car c4 = new Car(4,"Black",123455,"baleno");
+		Car c5 = new Car(5,"white",123455,"jazz");
+		car.add(c1);
+		car.add(c2);
+		car.add(c3);
+		car.add(c4);
+		car.add(c5);
+	}
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcomemethod() {
+		return "Welcome to Cars";
+	}
+	
+	@RequestMapping(value = "/cars", method = RequestMethod.GET)
+	public ArrayList<Car> getAllCars(){
+		return car;
+	}
+	@RequestMapping(value = "/car/{ID}")
+	public Car getCarByID(@PathVariable("ID") long id) {
+		return car.stream().filter(t->t.getId()==id).findFirst().get();
+	}
+	@RequestMapping(value = "/addcar", method = RequestMethod.POST, consumes = { "application/JSON", "application/XML" })
+	public ArrayList<Car> addCar(@RequestBody Car inputCar){
+		car.add(inputCar);
+		return car;
+	}
+	@RequestMapping(value = "/car/query", method = RequestMethod.POST)
+	public ArrayList<Car> getCarByFields(@RequestParam String color, @RequestParam String model){
+		ArrayList<Car> tempCarArray = new ArrayList();
+		for (int i=0;i<car.size();i++) {
+			Car tempCar = car.get(i);
+			if(tempCar.getColor() == color && tempCar.getModel()== model) {
+				tempCarArray.add(tempCar);
+			}
+		}
+		return tempCarArray;
+	}
+	
+	
+
+}

@@ -1,0 +1,51 @@
+package com.parameter.greeting;
+
+public class Greeting {
+	
+	private String name;
+	private long id;
+	private String city;
+	private float temp;
+	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public float getTemp() {
+		return temp;
+	}
+
+	public void setTemp(float temp) {
+		this.temp = temp;
+	}
+
+	
+	public Greeting(long id, String name, String city, float temp) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.city = city;
+		this.temp = temp;
+	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}

@@ -1,0 +1,6 @@
+package com.parameter.greeting;
+
+@RestController
+public class GreetingController {
+
+}

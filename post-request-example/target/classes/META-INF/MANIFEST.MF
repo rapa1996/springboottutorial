@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: post method example
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: RA371996
+Implementation-Vendor-Id: com.pattar
+Build-Jdk: 1.8.0_25
+Implementation-URL: http://projects.spring.io/spring-boot/post-request
+ -example/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

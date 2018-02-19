@@ -1,0 +1,22 @@
+package com.quote;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class Controller {
+	@RequestMapping(value = "/")
+	public Quote display() {
+		RestTemplate restTemplate = new RestTemplate();
+		Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+		log.info("hey");
+		return quote;
+	}
+	/*public Quote display() {
+		RestTemplate restTemplate = new RestTemplate();
+        Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+		return quote;
+	}*/
+
+}

@@ -1,0 +1,43 @@
+package com.postexample;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/")
+public class CarController {
+	
+	ArrayList<Car> car = new ArrayList(); 
+	
+	public CarController() {
+		Car c1 = new Car(1,"black",123455,"baleno");
+		car.add(c1);
+	}
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcomemethod() {
+		return "Welcome to Cars";
+	}
+	
+	@RequestMapping(value = "/cars", method = RequestMethod.GET)
+	public ArrayList<Car> getAllCars(){
+		return car;
+	}
+	@RequestMapping(value = "/find/{id}")
+	public Car getCarByID(@PathVariable("ID") long id) {
+		return car.stream().filter(t->t.getId()==id).findFirst().get();
+	}
+	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = { "application/JSON", "application/XML" })
+	public ArrayList<Car> addCar(@RequestBody Car inputCar){
+		car.add(inputCar);
+		return car;
+	}
+	
+	
+
+}

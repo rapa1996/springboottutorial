@@ -2,6 +2,8 @@ package com.postexample;
 
 import java.util.ArrayList;
 
+//This is a controller
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
